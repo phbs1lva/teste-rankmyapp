@@ -35,6 +35,12 @@ export function UserSearch() {
     setSearch(event.target.value);
   }
 
+  function handleKeyEnter(event: React.KeyboardEvent<HTMLInputElement>) {
+    if (event.key === "Enter" && search.trim()) {
+      getUserData(search);
+    }
+  }
+
   return (
     <div className="w-full flex items-center gap-2">
       <TextInput
@@ -42,6 +48,7 @@ export function UserSearch() {
         name="search-input"
         placeholder="Digite o nome de usuário aqui"
         onChange={handleSearchChange}
+        onKeyDown={handleKeyEnter}
         value={search}
       />
       <button
