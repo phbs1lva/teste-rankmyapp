@@ -1,3 +1,4 @@
+import { LanguageCharts } from "./src/components/LanguageCharts";
 import { RepositoryList } from "./src/components/RepositoryList";
 import { ThemeToggle } from "./src/components/ThemeToggle";
 import { UserProfile } from "./src/components/UserProfile";
@@ -19,6 +20,7 @@ export default function Home() {
           <GitHubRepositoriesProvider>
             <UserSearch />
             <UserProfile />
+            <LanguageCharts />
             <RepositoryList />
           </GitHubRepositoriesProvider>
         </GitHubUserProvider>
