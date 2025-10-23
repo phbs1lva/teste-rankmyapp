@@ -23,7 +23,7 @@ const initialState: GitHubRepositoriesState = {
 
 const githubReducer = (
   state: GitHubRepositoriesState,
-  action: GitHubRepositoriesAction
+  action: GitHubRepositoriesAction,
 ): GitHubRepositoriesState => {
   switch (action.type) {
     case "SET_REPOSITORIES":
@@ -44,7 +44,11 @@ const GitHubRepositoriesContext = createContext<{
   dispatch: React.Dispatch<GitHubRepositoriesAction>;
 } | null>(null);
 
-export function GitHubRepositoriesProvider({ children }: { children: ReactNode }) {
+export function GitHubRepositoriesProvider({
+  children,
+}: {
+  children: ReactNode;
+}) {
   const [state, dispatch] = useReducer(githubReducer, initialState);
 
   return (
@@ -58,7 +62,9 @@ export function useGitHubRepositoriesContext() {
   const context = useContext(GitHubRepositoriesContext);
 
   if (!context) {
-    throw new Error("useGitHubRepositoriesContext must be used within a GitHubProvider");
+    throw new Error(
+      "useGitHubRepositoriesContext must be used within a GitHubProvider",
+    );
   }
   return context;
 }

@@ -10,6 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "format": "npx prettier --write .",
     "test": "jest",
     "test:watch": "jest --watch"
   },

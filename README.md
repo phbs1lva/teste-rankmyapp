@@ -3,6 +3,7 @@
 ## Variáveis de ambiente
 
 Duas variáveis de ambiente são necessárias para rodar o projeto:
+
 - NEXT_PUBLIC_API_URL=https://api.github.com
 - NEXT_PUBLIC_GITHUB_TOKEN=
 

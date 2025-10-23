@@ -2,7 +2,14 @@ import React from "react";
 
 type TextInputProps = React.InputHTMLAttributes<HTMLInputElement>;
 
-export function TextInput({ id, name, value, placeholder, onChange, ...props }: TextInputProps) {
+export function TextInput({
+  id,
+  name,
+  value,
+  placeholder,
+  onChange,
+  ...props
+}: TextInputProps) {
   return (
     <input
       {...props}

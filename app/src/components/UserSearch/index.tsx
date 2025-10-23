@@ -2,10 +2,7 @@
 
 import React from "react";
 import { TextInput } from "../TextInput";
-import {
-  getUserDetails,
-  getUserRepos,
-} from "../../services/GitHubService";
+import { getUserDetails, getUserRepos } from "../../services/GitHubService";
 import { useGitHubUserContext } from "../../context/GitHubUserContext";
 import { useGitHubRepositoriesContext } from "../../context/GitHubRepositoriesContext";
 

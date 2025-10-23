@@ -23,7 +23,7 @@ const initialState: GitHubUserState = {
 
 const githubReducer = (
   state: GitHubUserState,
-  action: GitHubUserAction
+  action: GitHubUserAction,
 ): GitHubUserState => {
   switch (action.type) {
     case "SET_USER":
@@ -58,7 +58,9 @@ export function useGitHubUserContext() {
   const context = useContext(GitHubUserContext);
 
   if (!context) {
-    throw new Error("useGitHubUserContext must be used within a GitHubProvider");
+    throw new Error(
+      "useGitHubUserContext must be used within a GitHubProvider",
+    );
   }
   return context;
 }

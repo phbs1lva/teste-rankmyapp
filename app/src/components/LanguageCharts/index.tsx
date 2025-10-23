@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   BarChart,
@@ -53,7 +53,7 @@ export function LanguageCharts() {
         count: number;
         stars: number;
       }
-    >
+    >,
   );
 
   const languageCountData = Object.entries(languageStats)

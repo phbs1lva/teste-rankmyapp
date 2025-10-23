@@ -26,11 +26,11 @@ describe("<UserProfile />", () => {
         }}
       >
         <UserProfile />
-      </GitHubUserContext.Provider>
+      </GitHubUserContext.Provider>,
     );
 
     expect(
-      screen.getByText("Erro: Erro ao buscar usuário")
+      screen.getByText("Erro: Erro ao buscar usuário"),
     ).toBeInTheDocument();
   });
 
@@ -47,7 +47,7 @@ describe("<UserProfile />", () => {
         }}
       >
         <UserProfile />
-      </GitHubUserContext.Provider>
+      </GitHubUserContext.Provider>,
     );
 
     expect(screen.getByText("Carregando...")).toBeInTheDocument();
@@ -79,13 +79,13 @@ describe("<UserProfile />", () => {
         }}
       >
         <UserProfile />
-      </GitHubUserContext.Provider>
+      </GitHubUserContext.Provider>,
     );
 
     expect(screen.getByText(mockUser.name)).toBeVisible();
     expect(screen.getByText(`@${mockUser.login}`)).toBeVisible();
     expect(
-      screen.getByText(`${mockUser.public_repos} repositórios`)
+      screen.getByText(`${mockUser.public_repos} repositórios`),
     ).toBeVisible();
     expect(screen.getByText(`${mockUser.followers} seguidores`)).toBeVisible();
     expect(screen.getByAltText(mockUser.name)).toBeVisible();
