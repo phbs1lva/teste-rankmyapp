@@ -1,24 +1,10 @@
 "use client";
 
-import { useEffect } from "react";
 import { useGitHubRepositoriesContext } from "../../context/GitHubRepositoriesContext";
-import { Repository, RepositoryDetails } from "../../domain/GitHub";
-import { getRepoDetails } from "../../services/GitHubService";
-import React from "react";
+import { Repository } from "../../domain/GitHub";
 import { StarIcon } from "lucide-react";
 
 function RepositoryItem({ repo }: { repo: Repository }) {
-  const [details, setDetails] = React.useState<RepositoryDetails | null>(null);
-
-  useEffect(() => {
-    async function fetch() {
-      const response = await getRepoDetails(repo.owner.login, repo.name);
-      setDetails(response.data);
-    }
-
-    fetch();
-  }, [repo.name, repo.owner.login]);
-
   return (
     <div
       key={repo.id}
@@ -35,7 +21,7 @@ function RepositoryItem({ repo }: { repo: Repository }) {
         </a>
 
         <p className="text-gray-600 dark:text-gray-400 text-sm">
-          {details?.language}
+          {repo.language}
         </p>
       </div>
       <p className="text-gray-600 dark:text-gray-400 text-sm">

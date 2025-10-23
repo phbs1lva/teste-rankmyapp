@@ -2,7 +2,10 @@
 
 import React from "react";
 import { TextInput } from "../TextInput";
-import { getUserDetails, getUserRepos } from "../../services/GitHubService";
+import {
+  getUserDetails,
+  getUserRepos,
+} from "../../services/GitHubService";
 import { useGitHubUserContext } from "../../context/GitHubUserContext";
 import { useGitHubRepositoriesContext } from "../../context/GitHubRepositoriesContext";
 
@@ -24,7 +27,10 @@ export function UserSearch() {
       userDispatch({ type: "SET_USER", payload: user.data });
       reposDispatch({ type: "SET_REPOSITORIES", payload: repositories.data });
     } catch {
-      userDispatch({ type: "SET_ERROR", payload: "Houve um erro ao solicitar as informações do usuário" });
+      userDispatch({
+        type: "SET_ERROR",
+        payload: "Houve um erro ao solicitar as informações do usuário",
+      });
     } finally {
       userDispatch({ type: "SET_LOADING", payload: false });
       reposDispatch({ type: "SET_LOADING", payload: false });

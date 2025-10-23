@@ -24,7 +24,3 @@ export type Repository = {
     id: number;
   };
 };
-
-export type RepositoryDetails = {
-  language: string;
-};

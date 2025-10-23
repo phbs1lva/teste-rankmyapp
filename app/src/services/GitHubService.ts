@@ -12,7 +12,3 @@ export async function getUserDetails(username: string) {
 export async function getUserRepos(username: string) {
   return HttpClient.get<GetUserReposResponse>(`/users/${username}/repos`);
 }
-
-export async function getRepoDetails(username: string, repoName: string) {
-  return HttpClient.get<Repository>(`/repos/${username}/${repoName}`);
-}
