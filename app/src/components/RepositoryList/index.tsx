@@ -36,6 +36,7 @@ function RepositoryItem({ repo }: { repo: Repository }) {
   return (
     <div
       key={repo.id}
+      data-testid={`repository-item-${repo.id}`}
       className="border rounded border-gray-200 dark:border-gray-700 py-2 w-full p-4"
     >
       <div className="flex iems-center justify-between mb-2">
