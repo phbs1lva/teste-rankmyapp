@@ -1,5 +1,13 @@
 # teste-rankmyapp
 
+## Variáveis de ambiente
+
+Duas variáveis de ambiente são necessárias para rodar o projeto:
+- NEXT_PUBLIC_API_URL=https://api.github.com
+- NEXT_PUBLIC_GITHUB_TOKEN=
+
+A API do GitHub permite até 60 requisições por hora sem token, por conta disso, é melhor utilizar um token para utilizar a aplicação. O token pode ser qualquer PAT gerado pelo modo clássico, não precisa configurar nenhum escopo nele.
+
 ## Rodando a aplicação com npm
 
 ```

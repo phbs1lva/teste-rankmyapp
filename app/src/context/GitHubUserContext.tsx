@@ -39,7 +39,7 @@ const githubReducer = (
   }
 };
 
-const GitHubUserContext = createContext<{
+export const GitHubUserContext = createContext<{
   state: GitHubUserState;
   dispatch: React.Dispatch<GitHubUserAction>;
 } | null>(null);
