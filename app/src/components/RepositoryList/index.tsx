@@ -5,14 +5,21 @@ import { useGitHubRepositoriesContext } from "../../context/GitHubRepositoriesCo
 import { Repository } from "../../domain/GitHub";
 import { StarIcon } from "lucide-react";
 import { generateRandomRepo } from "../../utils";
+import { useGitHubUserContext } from "../../context/GitHubUserContext";
 
 function useRandomRepositoryInterval() {
+  const {
+    state: { user },
+  } = useGitHubUserContext();
+
   const {
     dispatch,
     state: { repositories },
   } = useGitHubRepositoriesContext();
 
   useEffect(() => {
+    if (!user) return;
+
     const interval = setInterval(() => {
       const newRepo = generateRandomRepo();
       dispatch({
@@ -22,7 +29,7 @@ function useRandomRepositoryInterval() {
     }, 30000);
 
     return () => clearInterval(interval);
-  }, [dispatch, repositories]);
+  }, [dispatch, repositories, user]);
 }
 
 function RepositoryItem({ repo }: { repo: Repository }) {
