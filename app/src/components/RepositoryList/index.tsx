@@ -1,8 +1,29 @@
 "use client";
 
+import { useEffect } from "react";
 import { useGitHubRepositoriesContext } from "../../context/GitHubRepositoriesContext";
 import { Repository } from "../../domain/GitHub";
 import { StarIcon } from "lucide-react";
+import { generateRandomRepo } from "../../utils";
+
+function useRandomRepositoryInterval() {
+  const {
+    dispatch,
+    state: { repositories },
+  } = useGitHubRepositoriesContext();
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const newRepo = generateRandomRepo();
+      dispatch({
+        type: "SET_REPOSITORIES",
+        payload: [...repositories, newRepo],
+      });
+    }, 30000);
+
+    return () => clearInterval(interval);
+  }, [dispatch, repositories]);
+}
 
 function RepositoryItem({ repo }: { repo: Repository }) {
   return (
@@ -42,6 +63,7 @@ function RepositoryItem({ repo }: { repo: Repository }) {
 }
 
 export function RepositoryList() {
+  useRandomRepositoryInterval();
   const {
     state: { repositories },
   } = useGitHubRepositoriesContext();
