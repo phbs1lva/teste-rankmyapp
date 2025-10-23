@@ -18,4 +18,13 @@ export type Repository = {
   stargazers_count: number;
   language: string;
   html_url: string;
-}
+  updated_at: string;
+  owner: {
+    login: string;
+    id: number;
+  };
+};
+
+export type RepositoryDetails = {
+  language: string;
+};

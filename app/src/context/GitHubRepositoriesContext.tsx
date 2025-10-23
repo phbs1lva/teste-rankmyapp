@@ -1,42 +1,37 @@
 "use client";
 
 import { createContext, useContext, useReducer, ReactNode } from "react";
-import { GitHubUser, Repository } from "../domain/GitHub";
+import { Repository } from "../domain/GitHub";
 
-interface GitHubState {
-  user: GitHubUser | null;
+interface GitHubRepositoriesState {
   repositories: Repository[];
   loading: boolean;
   error: string | null;
 }
 
-type GitHubAction =
-  | { type: "SET_USER"; payload: GitHubUser }
+type GitHubRepositoriesAction =
   | { type: "SET_REPOSITORIES"; payload: Repository[] }
   | { type: "SET_LOADING"; payload: boolean }
   | { type: "SET_ERROR"; payload: string }
   | { type: "CLEAR_STATE" };
 
-const initialState: GitHubState = {
-  user: null,
+const initialState: GitHubRepositoriesState = {
   repositories: [],
   loading: false,
   error: null,
 };
 
 const githubReducer = (
-  state: GitHubState,
-  action: GitHubAction
-): GitHubState => {
+  state: GitHubRepositoriesState,
+  action: GitHubRepositoriesAction
+): GitHubRepositoriesState => {
   switch (action.type) {
-    case "SET_USER":
-      return { ...state, user: action.payload, error: null };
     case "SET_REPOSITORIES":
       return { ...state, repositories: action.payload, error: null };
     case "SET_LOADING":
       return { ...state, loading: action.payload };
     case "SET_ERROR":
-      return { ...state, error: action.payload, user: null, repositories: [] };
+      return { ...state, error: action.payload, repositories: [] };
     case "CLEAR_STATE":
       return initialState;
     default:
@@ -44,26 +39,26 @@ const githubReducer = (
   }
 };
 
-const GitHubContext = createContext<{
-  state: GitHubState;
-  dispatch: React.Dispatch<GitHubAction>;
+const GitHubRepositoriesContext = createContext<{
+  state: GitHubRepositoriesState;
+  dispatch: React.Dispatch<GitHubRepositoriesAction>;
 } | null>(null);
 
-export function GitHubProvider({ children }: { children: ReactNode }) {
+export function GitHubRepositoriesProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(githubReducer, initialState);
 
   return (
-    <GitHubContext.Provider value={{ state, dispatch }}>
+    <GitHubRepositoriesContext.Provider value={{ state, dispatch }}>
       {children}
-    </GitHubContext.Provider>
+    </GitHubRepositoriesContext.Provider>
   );
 }
 
-export function useGitHubContext() {
-  const context = useContext(GitHubContext);
+export function useGitHubRepositoriesContext() {
+  const context = useContext(GitHubRepositoriesContext);
 
   if (!context) {
-    throw new Error("useGitHubContext must be used within a GitHubProvider");
+    throw new Error("useGitHubRepositoriesContext must be used within a GitHubProvider");
   }
   return context;
 }
